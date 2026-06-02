@@ -1,0 +1,38 @@
+<div class="layout">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+
+    <h2>SMS</h2>
+
+    <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/management">Management</a>
+    <a routerLink="/income">Income</a>
+    <a routerLink="/expenses">Expenses</a>
+    <a routerLink="/notice">Notice</a>
+    <a routerLink="/complaints">Complaints</a>
+    <a routerLink="/user">User</a>
+    <a routerLink="/setting">Setting</a>
+
+  </div>
+
+  <!-- Main Area -->
+  <div class="main">
+
+    <!-- Topbar -->
+    <div class="topbar">
+      <h2>Society Name</h2>
+
+      <div class="profile">
+        👤 Admin
+      </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+</div>
