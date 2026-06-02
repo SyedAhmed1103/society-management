@@ -19,7 +19,9 @@
 }
 
 .sidebar h2{
-  margin-bottom:30px;
+     text-align: center;
+    width: 100%;
+    margin-bottom: 40px;
 }
 
 .sidebar a{
