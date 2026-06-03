@@ -9,6 +9,8 @@
   height:100vh;
 }
 
+/* Sidebar */
+
 .sidebar{
   width:220px;
   background:#2563eb;
@@ -20,9 +22,26 @@
 }
 
 .sidebar h2{
-     text-align: center;
-    width: 100%;
-    margin-bottom: 40px;
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.sidebar.closed{
+  width:80px;
+  padding:20px 10px;
+}
+
+.sidebar.closed h2{
+  display:none;
+}
+
+.sidebar.closed a{
+  justify-content:center;
+  padding:15px 0;
+}
+
+.sidebar.closed .menu-text{
+  display:none;
 }
 
 .sidebar a{
@@ -31,29 +50,40 @@
   padding:12px;
   margin-bottom:10px;
   border-radius:6px;
-
-  display:flex;
-  align-items:center;   /* icon aur text center */
-  gap:10px;             /* icon-text spacing */
-}
-.sidebar a .material-icons{
-  font-size:28px;
-  line-height:1;
   display:flex;
   align-items:center;
-  justify-content:center;
-  min-width:32px;       /* sab icons same width lenge */
+  gap:10px;
+  transition:0.3s;
+}
+
+.sidebar a .material-icons{
+  font-size:28px;
+  min-width:32px;
 }
 
 .sidebar a:hover{
   background:#64748b;
 }
 
+.sidebar a.active-link{
+  background:#64748b;
+  font-weight:600;
+  border-left:4px solid white;
+}
+
+.sidebar.closed a.active-link{
+  border-left:none;
+}
+
+/* Main Section */
+
 .main{
   flex:1;
   display:flex;
   flex-direction:column;
 }
+
+/* Topbar */
 
 .topbar{
   height:70px;
@@ -65,15 +95,36 @@
   padding:0 20px;
 }
 
+.app-title{
+  font-size:22px;
+  font-weight:600;
+}
+
+/* Content */
+
 .content{
   flex:1;
   padding:20px;
   background:#f5f5f5;
+  overflow:auto;
 }
 
-.profile{
-  font-weight:bold;
+/* Menu Button */
+
+.menu-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
 }
+
+.menu-btn .material-icons{
+  font-size:32px;
+  color:#1e293b;
+}
+
+/* Profile */
+
 .profile-container{
   position:relative;
 }
@@ -86,6 +137,8 @@
   font-weight:bold;
   color:#1e293b;
 }
+
+/* Profile Dropdown */
 
 .profile-menu{
   position:absolute;
@@ -111,36 +164,4 @@
 
 .profile-menu a:hover{
   background:#f1f5f9;
-}
-
-.sidebar.closed{
-  width:80px;
-  padding:20px 10px;
-}
-
-.sidebar.closed h2{
-  display:none;
-}
-
-.sidebar.closed a{
-  justify-content:center;
-  padding:15px 0;
-}
-
-.sidebar.closed .menu-text{
-  display:none;
-}
-
-/* Menu Button */
-
-.menu-btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-}
-
-.menu-btn .material-icons{
-  font-size:32px;
-  color:#1e293b;
 }
