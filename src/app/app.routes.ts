@@ -1,21 +1,61 @@
 import { Routes } from '@angular/router';
-import { Login } from './features/login/login/login';
 
+import { Login } from './pages/login/login/login';
+import { Layout } from './layout/layout/layout';
+import { Userlist } from './pages/user/userlist/userlist';
+import { Maintenance } from './pages/maintenance/maintenance';
 
 export const routes: Routes = [
-{
-    path: 'users',
-    loadChildren: () =>
-      import('./features/user/user.routes')
-        .then(m => m.userRoutes)
-  },
- {
-    path: '',
+
+  // Login
+  {
+    path: 'login',
     component: Login
   },
-  // invalid URL handle karne ke liye
+
+  // Main Layout
+  {
+    path: '',
+    component: Layout,
+    children: [
+
+      // Default Page
+      {
+        path: '',
+        redirectTo: 'user',
+        pathMatch: 'full'
+      },
+
+      // User Page
+      {
+        path: 'user',
+        loadChildren: () =>
+          import('./pages/user/user.routes')
+            .then(m => m.userRoutes)
+      },
+      {
+        path: 'maintenance',
+        component: Maintenance
+      },
+
+      // Future Pages
+      // {
+      //   path: 'dashboard',
+      //   component: DashboardComponent
+      // },
+
+      // {
+      //   path: 'maintenance',
+      //   component: MaintenanceComponent
+      // }
+
+    ]
+  },
+
+  // Invalid Route
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: 'login'
   }
+
 ];

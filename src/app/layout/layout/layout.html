@@ -1,0 +1,34 @@
+<div class="layout">
+
+  <div class="sidebar">
+
+    <h2>App</h2>
+
+    <a routerLink="/">Dashboard</a>
+    <a routerLink="/maintenance">Maintenance</a>
+    <a routerLink="/income">Income</a>
+    <a routerLink="/expenses">Expenses</a>
+    <a routerLink="/notice">Notice</a>
+    <a routerLink="/complaints">Complaints</a>
+    <a routerLink="/user">User</a>
+    <a routerLink="/setting">Setting</a>
+
+  </div>
+
+  <div class="main">
+
+    <div class="topbar">
+      <h2>Society Maintenance App</h2>
+
+      <div class="profile">
+        👤 Admin Bangi
+      </div>
+    </div>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+</div>
