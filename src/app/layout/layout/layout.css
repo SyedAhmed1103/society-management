@@ -16,6 +16,7 @@
   display:flex;
   flex-direction:column;
   padding:20px;
+  transition:all 0.3s ease;
 }
 
 .sidebar h2{
@@ -45,7 +46,7 @@
 }
 
 .sidebar a:hover{
-  background:#334155;
+  background:#64748b;
 }
 
 .main{
@@ -72,4 +73,74 @@
 
 .profile{
   font-weight:bold;
+}
+.profile-container{
+  position:relative;
+}
+
+.profile{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  cursor:pointer;
+  font-weight:bold;
+  color:#1e293b;
+}
+
+.profile-menu{
+  position:absolute;
+  top:45px;
+  right:0;
+  width:220px;
+  background:white;
+  border-radius:10px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.15);
+  overflow:hidden;
+  z-index:1000;
+}
+
+.profile-menu a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 16px;
+  text-decoration:none;
+  color:#1e293b;
+  cursor:pointer;
+}
+
+.profile-menu a:hover{
+  background:#f1f5f9;
+}
+
+.sidebar.closed{
+  width:80px;
+  padding:20px 10px;
+}
+
+.sidebar.closed h2{
+  display:none;
+}
+
+.sidebar.closed a{
+  justify-content:center;
+  padding:15px 0;
+}
+
+.sidebar.closed .menu-text{
+  display:none;
+}
+
+/* Menu Button */
+
+.menu-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+
+.menu-btn .material-icons{
+  font-size:32px;
+  color:#1e293b;
 }

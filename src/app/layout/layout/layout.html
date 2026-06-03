@@ -1,63 +1,90 @@
 <div class="layout">
 
-  <div class="sidebar">
+  <div class="sidebar" [class.closed]="!sidebarOpen">
 
-    <h2>App</h2>
+  <h2>MENU</h2>
 
-    <a routerLink="/">
-      <span class="material-icons">dashboard</span>
-      Dashboard
-    </a>
+  <a routerLink="/">
+    <span class="material-icons">dashboard</span>
+    <span class="menu-text">Dashboard</span>
+  </a>
 
-    <a routerLink="/maintenance">
-      <span class="material-icons">build</span>
-      Maintenance
-    </a>
+  <a routerLink="/maintenance">
+    <span class="material-icons">build</span>
+    <span class="menu-text">Maintenance</span>
+  </a>
 
-    <a routerLink="/income">
-      <span class="material-icons">payments</span>
-      Income
-    </a>
+  <a routerLink="/income">
+    <span class="material-icons">payments</span>
+    <span class="menu-text">Income</span>
+  </a>
 
-    <a routerLink="/expenses">
-      <span class="material-icons">receipt_long</span>
-      Expenses
-    </a>
+  <a routerLink="/expenses">
+    <span class="material-icons">receipt_long</span>
+    <span class="menu-text">Expenses</span>
+  </a>
 
-    <a routerLink="/notice">
-      <span class="material-icons">campaign</span>
-      Notice
-    </a>
+  <a routerLink="/notice">
+    <span class="material-icons">campaign</span>
+    <span class="menu-text">Notice</span>
+  </a>
 
-    <a routerLink="/complaints">
-      <span class="material-icons">report_problem</span>
-      Complaints
-    </a>
+  <a routerLink="/complaints">
+    <span class="material-icons">report_problem</span>
+    <span class="menu-text">Complaints</span>
+  </a>
 
-    <a routerLink="/user">
-      <span class="material-icons">group</span>
-      User
-    </a>
+  <a routerLink="/user">
+    <span class="material-icons">group</span>
+    <span class="menu-text">User</span>
+  </a>
 
-    <a routerLink="/setting">
-      <span class="material-icons">settings</span>
-      Setting
-    </a>
+  <a routerLink="/setting">
+    <span class="material-icons">settings</span>
+    <span class="menu-text">Setting</span>
+  </a>
 
-  </div>
+</div>
 
   <div class="main">
 
     <div class="topbar">
 
-      <div></div>
+      <div class="menu-btn" (click)="toggleSidebar()">
+  <span class="material-icons">menu</span>
+</div>
 
       <h2 class="app-title">
         Society Maintenance App
       </h2>
 
-      <div class="profile">
-        Admin Bangi
+      <div class="profile-container">
+
+        <div class="profile" (click)="toggleMenu()">
+          <span class="material-icons">account_circle</span>
+          Admin Bangi
+          <span class="material-icons">arrow_drop_down</span>
+        </div>
+
+        <div class="profile-menu" *ngIf="showMenu">
+
+          <a routerLink="/profile">
+            <span class="material-icons">person</span>
+            My Account
+          </a>
+
+          <a routerLink="/setting">
+            <span class="material-icons">settings</span>
+            Settings
+          </a>
+
+          <a (click)="logout()">
+            <span class="material-icons">logout</span>
+            Logout
+          </a>
+
+        </div>
+
       </div>
 
     </div>
