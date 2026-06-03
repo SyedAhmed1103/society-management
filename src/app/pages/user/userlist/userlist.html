@@ -19,12 +19,13 @@
     />
 
     <input
-  type="text"
-  placeholder="Phone number"
-  aria-label="Phone number"
-  [(ngModel)]="phoneNumber"
-  (input)="allowPhoneOnly($event)"
-/>
+      type="text"
+      placeholder="Phone number"
+      aria-label="Phone number"
+      [(ngModel)]="phoneNumber"
+      name="phoneNumber"
+      (input)="allowPhoneOnly($event)"
+    />
 
     <button
       class="search-button"
@@ -64,7 +65,8 @@
     <div class="page-actions">
       <button
         class="icon-button"
-        routerLink="/user/add"
+        type="button"
+        (click)="openAddPanel()"
         aria-label="Add user">
         +
       </button>
@@ -98,5 +100,25 @@
     </table>
 
   </div>
+
+  <ng-container *ngIf="showAddPanel">
+    <div class="slide-backdrop" (click)="closeAddPanel()"></div>
+
+    <aside class="add-slide-panel" aria-label="Add user panel">
+      <div class="slide-panel-header">
+        <h3>Add User</h3>
+
+        <button
+          class="slide-close-button"
+          type="button"
+          (click)="closeAddPanel()"
+          aria-label="Close add user panel">
+          x
+        </button>
+      </div>
+
+      <app-useradd></app-useradd>
+    </aside>
+  </ng-container>
 
 </section>

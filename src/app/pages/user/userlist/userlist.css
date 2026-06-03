@@ -1,7 +1,10 @@
 .user-page {
+  position: relative;
   display: grid;
   gap: 28px;
   padding: 24px;
+  min-height: 100%;
+  overflow: hidden;
 }
 
 .user-search {
@@ -107,6 +110,61 @@
   line-height: 0.7;
 }
 
+.slide-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: rgba(15, 23, 42, 0.16);
+  animation: fadeIn 180ms ease-out;
+}
+
+.add-slide-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 6;
+  width: min(50%, 620px);
+  min-width: 420px;
+  height: 100%;
+  min-height: 560px;
+  overflow-y: auto;
+  border-left: 1px solid var(--border-color);
+  background: var(--bg-card);
+  box-shadow: -18px 0 36px rgba(15, 23, 42, 0.16);
+  animation: slideInFromRight 260ms ease-out;
+}
+
+.slide-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-header);
+}
+
+.slide-panel-header h3 {
+  color: var(--text-primary);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.slide-close-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+}
+
 .table-panel {
   overflow-x: auto;
   border: 1px solid var(--border-color);
@@ -194,5 +252,30 @@ button:focus-visible {
 
   .user-search input {
     width: 100%;
+  }
+
+  .add-slide-panel {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }

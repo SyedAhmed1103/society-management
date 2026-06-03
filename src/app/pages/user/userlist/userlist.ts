@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Useradd } from '../useradd/useradd';
 
 @Component({
   selector: 'app-userlist',
-  imports: [RouterLink, FormsModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule, Useradd],
   templateUrl: './userlist.html',
   styleUrl: './userlist.css',
 })
@@ -13,6 +15,15 @@ export class Userlist {
   firstName = '';
   flatNumber = '';
   phoneNumber = '';
+  showAddPanel = false;
+
+  openAddPanel() {
+    this.showAddPanel = true;
+  }
+
+  closeAddPanel() {
+    this.showAddPanel = false;
+  }
 
   searchUsers() {
     console.log('First Name:', this.firstName);
