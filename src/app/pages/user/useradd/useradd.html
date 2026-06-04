@@ -1,28 +1,85 @@
-<form class="add-user-form">
+<form class="add-user-form" (ngSubmit)="createUser()">
   <div class="form-grid">
     <label>
       First Name
-      <input type="text" placeholder="Enter first name" />
+      <input
+        type="text"
+        placeholder="Enter first name"
+        name="firstName"
+        [(ngModel)]="firstName"
+        required
+      />
+    </label>
+
+    <label>
+      Last Name
+      <input
+        type="text"
+        placeholder="Enter last name"
+        name="lastName"
+        [(ngModel)]="lastName"
+        required
+      />
     </label>
 
     <label>
       Email Address
-      <input type="email" placeholder="Enter email address" />
+      <input
+        type="email"
+        placeholder="Enter email address"
+        name="email"
+        [(ngModel)]="email"
+        required
+      />
+    </label>
+
+    <label>
+      Username
+      <input
+        type="text"
+        placeholder="Enter username"
+        name="username"
+        [(ngModel)]="username"
+        required
+      />
     </label>
 
     <label>
       Phone Number
-      <input type="tel" placeholder="Enter phone number" />
+      <input
+        type="tel"
+        placeholder="Enter phone number"
+        name="phone"
+        [(ngModel)]="phone"
+        required
+      />
     </label>
 
     <label>
-      Flat Number
-      <input type="text" placeholder="Enter flat number" />
+      Password
+      <input
+        type="password"
+        placeholder="Enter password"
+        name="password"
+        [(ngModel)]="password"
+        required
+      />
     </label>
+
   </div>
 
+  <p class="form-error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
   <div class="form-actions">
-    <button class="save-button" type="button">Save</button>
-    <button class="cancel-button" type="button">Cancel</button>
+    <button class="save-button" type="submit" [disabled]="isSaving">
+      {{ isSaving ? 'Creating...' : 'Create User' }}
+    </button>
+    <button
+      class="cancel-button"
+      type="button"
+      [disabled]="isSaving"
+      (click)="cancel()">
+      Cancel
+    </button>
   </div>
 </form>

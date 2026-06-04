@@ -1,7 +1,7 @@
 .user-page {
   position: relative;
-  display: grid;
-  gap: 28px;
+  display: flex;
+  flex-direction: column;
   padding: 24px;
   min-height: 100%;
   overflow: hidden;
@@ -13,6 +13,7 @@
   align-items: center;
   width: 100%;
   flex-wrap: wrap;
+  margin-bottom: 150px;
 }
 
 .user-search input {
@@ -78,7 +79,9 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 12px 22px;
+  padding: 8px 22px;
+  height: 60px;
+  margin-bottom: 0;
   border: 1px solid var(--border-color);
   border-bottom: 0;
   border-radius: 6px 6px 0 0;
@@ -100,14 +103,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
+  width: 46px;
+  height: 46px;
   padding: 0;
   background: transparent;
   color: var(--secondary);
-  font-size: 76px;
-  font-weight: 400;
-  line-height: 0.7;
+}
+
+.icon-button svg {
+  width: 28px;
+  height: 28px;
 }
 
 .slide-backdrop {
@@ -115,7 +120,12 @@
   inset: 0;
   z-index: 5;
   background: rgba(15, 23, 42, 0.16);
-  animation: fadeIn 180ms ease-out;
+  animation: fadeIn 1200ms ease-out forwards;
+}
+
+.slide-backdrop.closing {
+  pointer-events: none;
+  animation: fadeOut 1200ms ease-out forwards;
 }
 
 .add-slide-panel {
@@ -123,15 +133,20 @@
   top: 0;
   right: 0;
   z-index: 6;
-  width: min(50%, 620px);
-  min-width: 420px;
+  width: 78%;
+  min-width: 520px;
   height: 100%;
   min-height: 560px;
   overflow-y: auto;
   border-left: 1px solid var(--border-color);
   background: var(--bg-card);
   box-shadow: -18px 0 36px rgba(15, 23, 42, 0.16);
-  animation: slideInFromRight 260ms ease-out;
+  animation: slideInFromRight 1200ms forwards;
+}
+
+.add-slide-panel.closing {
+  box-shadow: none;
+  animation: slideOutToRight 1200ms forwards;
 }
 
 .slide-panel-header {
@@ -166,11 +181,11 @@
 }
 
 .table-panel {
+  margin-top: 0px;
   overflow-x: auto;
   border: 1px solid var(--border-color);
   border-radius: 0 0 6px 6px;
   background: var(--bg-card);
-  margin-top: -28px;
 }
 
 table {
@@ -270,6 +285,16 @@ button:focus-visible {
   }
 }
 
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -277,5 +302,15 @@ button:focus-visible {
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
   }
 }

@@ -12,17 +12,36 @@ import { Useradd } from '../useradd/useradd';
 })
 export class Userlist {
 
+  private readonly addPanelAnimationMs = 1300;
+
   firstName = '';
   flatNumber = '';
   phoneNumber = '';
   showAddPanel = false;
+  isAddPanelClosing = false;
+  private addPanelCloseTimer?: ReturnType<typeof setTimeout>;
 
   openAddPanel() {
+    if (this.addPanelCloseTimer) {
+      clearTimeout(this.addPanelCloseTimer);
+    }
+
     this.showAddPanel = true;
+    this.isAddPanelClosing = false;
   }
 
   closeAddPanel() {
-    this.showAddPanel = false;
+    if (this.isAddPanelClosing) {
+      return;
+    }
+
+    this.isAddPanelClosing = true;
+
+    this.addPanelCloseTimer = setTimeout(() => {
+      this.showAddPanel = false;
+      this.isAddPanelClosing = false;
+      this.addPanelCloseTimer = undefined;
+    }, this.addPanelAnimationMs);
   }
 
   searchUsers() {

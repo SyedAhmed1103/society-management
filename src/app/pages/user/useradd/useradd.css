@@ -6,7 +6,9 @@
 
 .form-grid {
   display: grid;
-  gap: 18px;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  column-gap: 34px;
+  row-gap: 18px;
 }
 
 label {
@@ -34,6 +36,16 @@ input:focus {
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-error {
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: 600;
+}
+
 .form-actions {
   display: flex;
   justify-content: flex-end;
@@ -51,6 +63,11 @@ button {
   padding: 0 18px;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
 .save-button {
   background: var(--primary);
   color: #ffffff;
@@ -60,4 +77,14 @@ button {
   border: 1px solid var(--border-color);
   background: var(--bg-card);
   color: var(--text-primary);
+}
+
+@media (max-width: 800px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: auto;
+  }
 }

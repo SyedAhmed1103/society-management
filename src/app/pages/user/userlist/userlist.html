@@ -68,7 +68,16 @@
         type="button"
         (click)="openAddPanel()"
         aria-label="Add user">
-        +
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3"
+          stroke-linecap="round">
+          <path d="M12 5v14"></path>
+          <path d="M5 12h14"></path>
+        </svg>
       </button>
     </div>
 
@@ -102,9 +111,16 @@
   </div>
 
   <ng-container *ngIf="showAddPanel">
-    <div class="slide-backdrop" (click)="closeAddPanel()"></div>
+    <div
+      class="slide-backdrop"
+      [class.closing]="isAddPanelClosing"
+      (click)="closeAddPanel()">
+    </div>
 
-    <aside class="add-slide-panel" aria-label="Add user panel">
+    <aside
+      class="add-slide-panel"
+      [class.closing]="isAddPanelClosing"
+      aria-label="Add user panel">
       <div class="slide-panel-header">
         <h3>Add User</h3>
 
@@ -117,7 +133,10 @@
         </button>
       </div>
 
-      <app-useradd></app-useradd>
+      <app-useradd
+        (created)="closeAddPanel()"
+        (cancelled)="closeAddPanel()">
+      </app-useradd>
     </aside>
   </ng-container>
 

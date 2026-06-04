@@ -3,7 +3,7 @@ import { Login } from './login/login';
 
 export const LOGIN_ROUTES: Routes = [
   {
-    path: '',
+    path: '/login',
     component: Login
   }
 ];
