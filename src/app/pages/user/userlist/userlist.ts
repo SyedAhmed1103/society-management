@@ -1,45 +1,42 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-userlist',
-  imports: [RouterLink, FormsModule],
+  imports: [FormsModule, MatTableModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatIconModule],
   templateUrl: './userlist.html',
   styleUrl: './userlist.css',
 })
 export class Userlist {
 
-  firstName = '';
-  flatNumber = '';
-  phoneNumber = '';
+  displayedColumns: string[] = [
+    'name',
+    'email',
+    'phone',
+    'flat'
+  ];
 
-  searchUsers() {
-    console.log('First Name:', this.firstName);
-    console.log('Flat Number:', this.flatNumber);
-    console.log('Phone Number:', this.phoneNumber);
-
-    // API call ya filter logic yaha ayega
-  }
-
-  resetForm() {
-    this.firstName = '';
-    this.flatNumber = '';
-    this.phoneNumber = '';
-  }
-
-  allowPhoneOnly(event: any) {
-    let value = event.target.value;
-
-    // Sirf numbers aur + allow
-    value = value.replace(/[^0-9+]/g, '');
-
-    // + sirf first position pe allow
-    if (value.indexOf('+') > 0) {
-      value = value.replace(/\+/g, '');
+  dataSource = new MatTableDataSource([
+    {
+      name: 'Ahmed',
+      email: 'ahmed@gmail.com',
+      phone: '9876543210',
+      flat: 'A-101'
+    },
+    {
+      name: 'Zainub',
+      email: 'zainub@gmail.com',
+      phone: '9876543211',
+      flat: 'B-202'
     }
-
-    event.target.value = value;
-    this.phoneNumber = value;
-  }
+  ]);
 }
