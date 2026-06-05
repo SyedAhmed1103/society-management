@@ -33,6 +33,12 @@ export const routes: Routes = [
           import('./pages/user/user.routes')
             .then(m => m.userRoutes)
       },
+        {
+        path: 'setting',
+        loadChildren: () =>
+          import('./pages/setting/setting.routes')
+            .then(m => m.settingRoutes)
+      },
       {
         path: 'maintenance',
         component: Maintenance

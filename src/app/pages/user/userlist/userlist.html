@@ -1,7 +1,90 @@
 <div class="table-container mat-elevation-z4">
 
+<<<<<<< HEAD
   <div class="table-header">
     <!-- <h2>Customer List</h2> -->
+=======
+  <form class="user-search" aria-label="Search users">
+
+    <input
+      type="text"
+      placeholder="First name"
+      aria-label="First name"
+      [(ngModel)]="firstName"
+      name="firstName"
+    />
+
+    <input
+      type="text"
+      placeholder="Flat number"
+      aria-label="Flat number"
+      [(ngModel)]="flatNumber"
+      name="flatNumber"
+    />
+
+    <input
+      type="text"
+      placeholder="Phone number"
+      aria-label="Phone number"
+      [(ngModel)]="phoneNumber"
+      name="phoneNumber"
+      (input)="allowPhoneOnly($event)"
+    />
+
+    <button
+      class="search-button"
+      type="button"
+      (click)="searchUsers()">
+
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round">
+
+        <circle cx="11" cy="11" r="7"></circle>
+        <path d="m20 20-3.5-3.5"></path>
+
+      </svg>
+
+      Search
+    </button>
+
+    <button
+      class="reset-button"
+      type="button"
+      (click)="resetForm()">
+      Reset
+    </button>
+
+  </form>
+
+  <div class="page-header">
+
+    <h2>User List</h2>
+
+    <div class="page-actions">
+      <button
+        class="icon-button"
+        type="button"
+        (click)="openAddPanel()"
+        aria-label="Add user">
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3"
+          stroke-linecap="round">
+          <path d="M12 5v14"></path>
+          <path d="M5 12h14"></path>
+        </svg>
+      </button>
+    </div>
+>>>>>>> 9c92b9deb80028ac44666f25bfc86f78d712ff4c
 
     <mat-form-field appearance="outline">
       <mat-label>Search</mat-label>
@@ -61,4 +144,38 @@
     [pageSizeOptions]="[5,10,20,50]">
   </mat-paginator>
 
+<<<<<<< HEAD
 </div>
+=======
+  <ng-container *ngIf="showAddPanel">
+    <div
+      class="slide-backdrop"
+      [class.closing]="isAddPanelClosing"
+      (click)="closeAddPanel()">
+    </div>
+
+    <aside
+      class="add-slide-panel"
+      [class.closing]="isAddPanelClosing"
+      aria-label="Add user panel">
+      <div class="slide-panel-header">
+        <h3>Add User</h3>
+
+        <button
+          class="slide-close-button"
+          type="button"
+          (click)="closeAddPanel()"
+          aria-label="Close add user panel">
+          x
+        </button>
+      </div>
+
+      <app-useradd
+        (created)="closeAddPanel()"
+        (cancelled)="closeAddPanel()">
+      </app-useradd>
+    </aside>
+  </ng-container>
+
+</section>
+>>>>>>> 9c92b9deb80028ac44666f25bfc86f78d712ff4c

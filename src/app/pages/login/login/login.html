@@ -26,7 +26,7 @@
                 <img src="https://www.itdax.in/assets/img/itdax-studio.webp" alt="">
             </div>
 
-            <h2>Welcome Back 👋</h2>
+            <h2>Welcome Back</h2>
 
             <p class="subtitle">
                 Login to access your dashboard
@@ -34,42 +34,38 @@
 
             <form (ngSubmit)="login()">
 
-                <!-- Building -->
-
                 <div class="form-group">
-                    <label>Building Name</label>
+                    <label>Email / Phone Number</label>
 
-                    <select>
-                        <option value="">Select Building</option>
-                        <option value="1">Royal Residency</option>
-                        <option value="2">Green Tower</option>
-                        <option value="3">Sky Heights</option>
-                    </select>
+                    <input
+                        type="text"
+                        placeholder="Enter Email or Mobile Number"
+                        name="emailOrPhone"
+                        [(ngModel)]="emailOrPhone"
+                        autocomplete="username">
                 </div>
-
-                <!-- Email / Mobile -->
-
-                <div class="form-group">
-                    <label>Email / Mobile Number</label>
-
-                    <input type="text" placeholder="Enter Email or Mobile Number">
-                </div>
-
-                <!-- Password -->
 
                 <div class="form-group">
                     <label>Password</label>
 
                     <div class="password-wrapper">
-                        <input type="password">
+                        <input
+                            [type]="showPassword ? 'text' : 'password'"
+                            name="password"
+                            [(ngModel)]="password"
+                            autocomplete="current-password">
 
-                        <button type="button">
-                            <i class="fa-solid fa-eye"></i>
+                        <button
+                            type="button"
+                            (click)="showPassword = !showPassword">
+                            {{ showPassword ? 'Hide' : 'Show' }}
                         </button>
                     </div>
                 </div>
 
-                <!-- Options -->
+                <p class="login-error" *ngIf="errorMessage">
+                    {{ errorMessage }}
+                </p>
 
                 <div class="options">
 
@@ -84,13 +80,12 @@
 
                 </div>
 
-                <!-- Login -->
-
-               <button
-    type="submit"
-    class="login-btn">
-    Login
-  </button>
+                <button
+                    type="submit"
+                    class="login-btn"
+                    [disabled]="isLoggingIn">
+                    {{ isLoggingIn ? 'Logging in...' : 'Login' }}
+                </button>
 
             </form>
         </div>
