@@ -14,54 +14,54 @@ export const routes: Routes = [
   },
 
   // Main Layout
-  {
-    path: '',
-    component: Layout,
-    children: [
+  // {
+  //   path: '',
+  //   component: Layout,
+  //   children: [
 
-      // Default Page
-      {
-        path: '',
-        redirectTo: 'user',
-        pathMatch: 'full'
-      },
+  //     // Default Page
+  //     {
+  //       path: '',
+  //       redirectTo: 'user',
+  //       pathMatch: 'full'
+  //     },
 
-      // User Page
-      {
-        path: 'user',
-        loadChildren: () =>
-          import('./pages/user/user.routes')
-            .then(m => m.userRoutes)
-      },
-        {
-        path: 'setting',
-        loadChildren: () =>
-          import('./pages/setting/setting.routes')
-            .then(m => m.settingRoutes)
-      },
-      {
-        path: 'maintenance',
-        component: Maintenance
-      },
+  //     // User Page
+  //     {
+  //       path: 'user',
+  //       loadChildren: () =>
+  //         import('./pages/user/user.routes')
+  //           .then(m => m.userRoutes)
+  //     },
+  //       {
+  //       path: 'setting',
+  //       loadChildren: () =>
+  //         import('./pages/setting/setting.routes')
+  //           .then(m => m.settingRoutes)
+  //     },
+  //     {
+  //       path: 'maintenance',
+  //       component: Maintenance
+  //     },
 
-      // Future Pages
-      // {
-      //   path: 'dashboard',
-      //   component: DashboardComponent
-      // },
+  //     // Future Pages
+  //     // {
+  //     //   path: 'dashboard',
+  //     //   component: DashboardComponent
+  //     // },
 
-      // {
-      //   path: 'maintenance',
-      //   component: MaintenanceComponent
-      // }
+  //     // {
+  //     //   path: 'maintenance',
+  //     //   component: MaintenanceComponent
+  //     // }
 
-    ]
-  },
+  //   ]
+  // },
 
   // Invalid Route
-  {
-    path: '**',
-    redirectTo: 'login'
-  }
+  // {
+  //   path: '**',
+  //   redirectTo: 'login'
+  // }
 
 ];
