@@ -1,50 +1,77 @@
 <div class="layout">
 
-  <div class="sidebar" [class.closed]="!sidebarOpen">
+<div class="sidebar" [class.closed]="!sidebarOpen">
 
-    <h2>MENU</h2>
+  <h2>MENU</h2>
 
-    <a routerLink="/dashboard" routerLinkActive="active-link">
-  <span class="material-icons">dashboard</span>
-  <span class="menu-text">Dashboard</span>
-</a>
+  <a routerLink="/dashboard" routerLinkActive="active-link">
+    <span class="material-icons">dashboard</span>
+    <span class="menu-text">Dashboard</span>
+  </a>
 
-    <a routerLink="/maintenance" routerLinkActive="active-link">
-      <span class="material-icons">build</span>
-      <span class="menu-text">Maintenance</span>
-    </a>
+  <a routerLink="/maintenance" routerLinkActive="active-link">
+    <span class="material-icons">build</span>
+    <span class="menu-text">Maintenance</span>
+  </a>
 
-    <a routerLink="/income" routerLinkActive="active-link">
-      <span class="material-icons">payments</span>
-      <span class="menu-text">Income</span>
-    </a>
+  <a routerLink="/income" routerLinkActive="active-link">
+    <span class="material-icons">payments</span>
+    <span class="menu-text">Income</span>
+  </a>
 
-    <a routerLink="/expenses" routerLinkActive="active-link">
-      <span class="material-icons">receipt_long</span>
-      <span class="menu-text">Expenses</span>
-    </a>
+  <a routerLink="/expenses" routerLinkActive="active-link">
+    <span class="material-icons">receipt_long</span>
+    <span class="menu-text">Expenses</span>
+  </a>
 
-    <a routerLink="/notice" routerLinkActive="active-link">
-      <span class="material-icons">campaign</span>
-      <span class="menu-text">Notice</span>
-    </a>
+  <a routerLink="/notice" routerLinkActive="active-link">
+    <span class="material-icons">campaign</span>
+    <span class="menu-text">Notice</span>
+  </a>
 
-    <a routerLink="/complaints" routerLinkActive="active-link">
-      <span class="material-icons">report_problem</span>
-      <span class="menu-text">Complaints</span>
-    </a>
+  <a routerLink="/complaints" routerLinkActive="active-link">
+    <span class="material-icons">report_problem</span>
+    <span class="menu-text">Complaints</span>
+  </a>
 
-    <a routerLink="/user" routerLinkActive="active-link">
-      <span class="material-icons">group</span>
-      <span class="menu-text">User</span>
-    </a>
+  <a routerLink="/user" routerLinkActive="active-link">
+    <span class="material-icons">group</span>
+    <span class="menu-text">User</span>
+  </a>
 
-    <a routerLink="/setting" routerLinkActive="active-link">
-      <span class="material-icons">settings</span>
-      <span class="menu-text">Setting</span>
-    </a>
-
+  <!-- Settings Menu -->
+  <div class="menu-item" (click)="toggleSettings()">
+    <span class="material-icons">settings</span>
+    <span class="menu-text">Settings</span>
+    <span class="material-icons arrow">
+      {{ settingsOpen ? 'expand_less' : 'expand_more' }}
+    </span>
   </div>
+
+<div class="submenu-panel" *ngIf="settingsOpen"
+    >
+
+  <h3>Settings</h3>
+
+  <a routerLink="/settings/building">
+    Building
+  </a>
+
+  <a routerLink="/settings/bank-detail">
+    Bank Detail
+  </a>
+
+  <a routerLink="/settings/wing">
+    Wing
+  </a>
+
+  <a routerLink="/settings/flat">
+    Flat
+  </a>
+
+</div>
+
+</div>
 
   <div class="main">
 
@@ -55,14 +82,14 @@
       </div>
 
       <h2 class="app-title">
-        Society Maintenance App
+        {{ buildingName }}
       </h2>
 
       <div class="profile-container">
 
         <div class="profile" (click)="toggleMenu()">
           <span class="material-icons">account_circle</span>
-          Admin Bangi
+          {{AdminName}}
           <span class="material-icons">arrow_drop_down</span>
         </div>
 

@@ -2,8 +2,6 @@ import { Routes } from '@angular/router';
 
 import { Login } from './pages/login/login/login';
 import { Layout } from './layout/layout/layout';
-import { Userlist } from './pages/user/userlist/userlist';
-import { Maintenance } from './pages/maintenance/maintenance';
 
 export const routes: Routes = [
 
@@ -13,36 +11,28 @@ export const routes: Routes = [
     component: Login
   },
 
+  {
+    path: 'user',
+    component: Layout
+  },
   // Main Layout
-  // {
-  //   path: '',
-  //   component: Layout,
-  //   children: [
+  {
+    path: '',
+    // component: user,
+    children: [
 
-  //     // Default Page
-  //     {
-  //       path: '',
-  //       redirectTo: 'user',
-  //       pathMatch: 'full'
-  //     },
+      // Default Page
+      // {
+      //   path: 'user',
+      //   redirectTo: 'user',
+      //   pathMatch: 'full'
+      // },
 
-  //     // User Page
-  //     {
-  //       path: 'user',
-  //       loadChildren: () =>
-  //         import('./pages/user/user.routes')
-  //           .then(m => m.userRoutes)
-  //     },
-  //       {
-  //       path: 'setting',
-  //       loadChildren: () =>
-  //         import('./pages/setting/setting.routes')
-  //           .then(m => m.settingRoutes)
-  //     },
-  //     {
-  //       path: 'maintenance',
-  //       component: Maintenance
-  //     },
+
+
+    ]
+
+  }
 
   //     // Future Pages
   //     // {

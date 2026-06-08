@@ -1,104 +1,190 @@
-<div class="login-container">
+<div class="login-page">
 
-  <!-- Left Section -->
+
+  <!-- LEFT SIDE -->
+
+
   <div class="left-panel">
 
-    <div class="content">
 
-      <mat-icon class="logo">apartment</mat-icon>
+    <div class="left-content">
 
-      <h1>Society Management Pro</h1>
+
+      <div class="logo">
+        <span>🏢 Society Management</span>
+      </div>
+
+
+      <h1>
+        Welcome Back!
+      </h1>
+
 
       <p>
-        Manage Residents, Maintenance,
-        Visitors and Complaints from
-        a single platform.
+        Manage buildings, flats, maintenance, notices,
+        complaints and payments from one dashboard.
       </p>
 
-      <div class="features">
+
+      <div class="feature">
+        <div class="feature-icon">🔒</div>
+
 
         <div>
-          <mat-icon>check_circle</mat-icon>
-          Resident Management
+          <h4>Secure & Reliable</h4>
+          <span>Your society data is protected.</span>
         </div>
-
-        <div>
-          <mat-icon>check_circle</mat-icon>
-          Maintenance Tracking
-        </div>
-
-        <div>
-          <mat-icon>check_circle</mat-icon>
-          Visitor Monitoring
-        </div>
-
-        <div>
-          <mat-icon>check_circle</mat-icon>
-          Complaint Resolution
-        </div>
-
       </div>
+
+
+      <div class="feature">
+        <div class="feature-icon">💳</div>
+
+
+        <div>
+          <h4>Maintenance Tracking</h4>
+          <span>Generate and manage bills easily.</span>
+        </div>
+      </div>
+
+
+      <div class="feature">
+        <div class="feature-icon">📢</div>
+
+
+        <div>
+          <h4>Notices & Complaints</h4>
+          <span>Stay connected with residents.</span>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+  <div class="right-panel">
+
+  <div class="login-card">
+
+    <div class="login-header">
+
+      <h2>Login to Your Account</h2>
+
+      <p class="subtitle">
+        Enter your credentials to access your dashboard
+      </p>
+
+    </div>
+
+    <form (ngSubmit)="Login()">
+
+      <!-- BUILDING -->
+
+<div class="form-group autocomplete-group">
+  <label>Building Name</label>
+
+  <div class="input-group">
+    <span class="input-icon">🏢</span>
+
+    <input
+      type="text"
+      name="buildingName"
+      [(ngModel)]="buildingName"
+      (input)="onBuildingSearch()"
+      autocomplete="off"
+      placeholder="Search Building Name">
+  </div>
+
+  <div
+    class="autocomplete-list"
+    *ngIf="filteredBuildings.length > 0">
+
+    <div
+      *ngFor="let item of filteredBuildings"
+      class="autocomplete-item"
+      (click)="selectBuilding(item)">
+
+      {{ item.building_name }}
 
     </div>
 
   </div>
+</div>
 
-  <!-- Right Section -->
-  <div class="right-panel">
+      <!-- EMAIL -->
 
-    <mat-card class="login-card mat-elevation-z12">
+      <div class="form-group">
 
-      <mat-card-header>
-        <mat-card-title>
-          Welcome Back
-        </mat-card-title>
-      </mat-card-header>
+        <label>Mobile Number</label>
 
-      <mat-card-content>
+        <div class="input-group">
 
-        <mat-form-field appearance="outline">
-          <mat-label>Username</mat-label>
-          <input
-            matInput
-            name="username"
-            [(ngModel)]="username">
-        </mat-form-field>
+          <span class="input-icon">✉️</span>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Password</mat-label>
+         <input
+  type="text"
+  [(ngModel)]="phone"
+  name="phone"
+  placeholder="Mobile Number">
 
-          <input
-            matInput
-            [type]="hidePassword ? 'password' : 'text'"
-            name="password"
-            [(ngModel)]="password">
+        </div>
+
+      </div>
+
+      <!-- PASSWORD -->
+
+      <div class="form-group">
+
+        <label>Password</label>
+
+        <div class="input-group password-wrapper">
+
+          <span class="input-icon">🔒</span>
+
+        <input
+  [type]="showPassword ? 'text' : 'password'"
+  [(ngModel)]="password"
+  name="password"
+  placeholder="Enter Password">
 
           <button
-            mat-icon-button
-            matSuffix
             type="button"
-            (click)="hidePassword = !hidePassword">
+            class="toggle-password"
+            (click)="showPassword = !showPassword">
 
-            <mat-icon>
-              {{hidePassword ? 'visibility_off' : 'visibility'}}
-            </mat-icon>
+            {{ showPassword ? '🙈' : '👁️' }}
 
           </button>
 
-        </mat-form-field>
+        </div>
 
-        <button
-          mat-raised-button
-          color="primary"
-          class="login-btn">
+      </div>
 
-          Sign In
+      <!-- FORGOT -->
 
-        </button>
+      <div class="forgot">
 
-      </mat-card-content>
+        <a>
+          Forgot Password?
+        </a>
 
-    </mat-card>
+      </div>
+
+      <!-- LOGIN -->
+
+      <button
+        type="submit"
+        class="login-btn"
+        >
+
+        Login
+
+      </button>
+
+    </form>
 
   </div>
 

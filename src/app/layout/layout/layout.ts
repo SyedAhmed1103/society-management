@@ -20,8 +20,26 @@ import { CommonModule } from '@angular/common';
 })
 export class Layout {
 
+  buildingName = '';
+  AdminName: any;
+
+  ngOnInit() {
+
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+    this.buildingName = user.building_name || 'Society Maintenance App';
+    this.AdminName = user.name ;
+
+
+  }
+
   showMenu = false;
   sidebarOpen = true;
+  settingsOpen = false;
+
+toggleSettings() {
+  this.settingsOpen = !this.settingsOpen;
+}
 
   toggleMenu() {
     this.showMenu = !this.showMenu;

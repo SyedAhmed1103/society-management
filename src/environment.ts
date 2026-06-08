@@ -1,4 +1,4 @@
 export const environment = {
 production: false,
-apiurl: "https://petstore.swagger.io/v2/"
+apiurl: "http://127.0.0.1:8000/api/"
 };
