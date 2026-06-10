@@ -1,0 +1,96 @@
+.wing-container{
+  padding:20px;
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.empty-state{
+  text-align:center;
+  padding:80px 20px;
+  border:1px dashed #ccc;
+  border-radius:10px;
+}
+
+.icon{
+  font-size:60px;
+}
+
+.add-btn,
+.save-btn{
+  padding:10px 20px;
+  cursor:pointer;
+}
+
+.form-card{
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  margin-bottom:20px;
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+.form-group input,
+.form-group select{
+  width:100%;
+  padding:10px;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  border:1px solid var(--black);
+  padding:12px;
+}
+
+th{
+  background:var(--primary);
+  color:var(--white)
+}
+
+
+.action-icons{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+}
+
+.edit-icon{
+  cursor:pointer;
+  opacity:0;
+  transition:.2s;
+}
+
+tr:hover .edit-icon{
+  opacity:1;
+}
+
+.save-icon{
+  color:green;
+  cursor:pointer;
+}
+
+.cancel-icon{
+  color:red;
+  cursor:pointer;
+}
+
+.edit-input{
+  width:100%;
+  padding:8px;
+}

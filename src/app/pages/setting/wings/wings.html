@@ -1,0 +1,163 @@
+<div class="wing-container">
+
+  <div class="header">
+    <h2>Wing Management</h2>
+
+    <button *ngIf="wingList.length > 0"
+            class="add-btn"
+            (click)="openForm()">
+      + Add Wing
+    </button>
+  </div>
+
+  <!-- Empty State -->
+
+  <div class="empty-state" *ngIf="wingList.length === 0">
+
+    <span class="material-icons icon">
+      apartment
+    </span>
+
+    <h3>No Wings Found</h3>
+
+    <p>Create your first wing to start adding flats.</p>
+
+    <button class="add-btn"
+            (click)="openForm()">
+      Add Wing
+    </button>
+
+  </div>
+
+  <!-- Add Form -->
+
+  <div class="form-card" *ngIf="showForm">
+
+    <h3>Add Wing</h3>
+
+    <div class="form-group">
+    <label>Wing Name</label>
+
+    <input
+      type="text"
+      [(ngModel)]="wingData.wing_name"
+      placeholder="Enter Wing Name">
+  </div>
+
+     <div class="form-group">
+    <label>Status</label>
+
+    <select [(ngModel)]="wingData.is_active">
+      <option [ngValue]="true">Active</option>
+      <option [ngValue]="false">Inactive</option>
+    </select>
+  </div>
+
+   <div class="actions">
+
+    <button
+      class="save-btn"
+      (click)="saveWing()">
+      Save
+    </button>
+
+    <button
+      class="cancel-btn"
+      (click)="closeForm()">
+      Cancel
+    </button>
+
+  </div>
+
+  </div>
+
+  <!-- Table -->
+
+<table *ngIf="wingList.length > 0">
+
+  <thead>
+    <tr>
+      <th>Wing Name</th>
+      <th>Status</th>
+      <th width="120">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr *ngFor="let wing of wingList">
+
+      <!-- Wing Name -->
+      <td>
+
+        <span *ngIf="editId !== wing.id">
+          {{ wing.wing_name }}
+        </span>
+
+        <input
+          *ngIf="editId === wing.id"
+          [(ngModel)]="wing.wing_name"
+          class="edit-input">
+
+      </td>
+
+      <!-- Status -->
+      <td>
+
+        <span *ngIf="editId !== wing.id">
+          {{ wing.is_active ? 'Active' : 'Inactive' }}
+        </span>
+
+        <select
+          *ngIf="editId === wing.id"
+          [(ngModel)]="wing.is_active">
+
+          <option [ngValue]="true">Active</option>
+          <option [ngValue]="false">Inactive</option>
+
+        </select>
+
+      </td>
+
+      <!-- Action -->
+      <td>
+
+        <!-- Normal Mode -->
+        <div class="action-icons"
+             *ngIf="editId !== wing.id">
+
+          <span
+            class="material-icons edit-icon"
+            (click)="startEdit(wing)">
+            edit
+          </span>
+
+        </div>
+
+        <!-- Edit Mode -->
+        <div class="action-icons"
+             *ngIf="editId === wing.id">
+
+          <span
+            class="material-icons save-icon"
+            (click)="updateWing(wing)">
+            done
+          </span>
+
+          <span
+            class="material-icons cancel-icon"
+            (click)="cancelEdit()">
+            close
+          </span>
+
+        </div>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+
+</table>
+
+</div>

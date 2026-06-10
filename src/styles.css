@@ -26,6 +26,8 @@
 
   /* Border */
   --border-color: #e2e8f0;
+    --white: #ffffff;
+      --black: #363131;
 }
 * {
   margin: 0;

@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 import { Login } from './pages/login/login/login';
 import { Layout } from './layout/layout/layout';
+import { Admin } from './pages/admin/admin';
 
 export const routes: Routes = [
 
@@ -11,47 +12,35 @@ export const routes: Routes = [
     component: Login
   },
 
-  {
-    path: 'user',
-    component: Layout
-  },
-  // Main Layout
-  {
+ {
     path: '',
-    // component: user,
+    component: Layout,
     children: [
 
-      // Default Page
-      // {
-      //   path: 'user',
-      //   redirectTo: 'user',
-      //   pathMatch: 'full'
-      // },
-
-
+      {
+        path: 'setting',
+        loadChildren: () =>
+          import('./pages/setting/setting.routes')
+            .then(m => m.settingRoutes)
+      },
+      {
+         path: 'profile',
+         component: Admin,
+      }
 
     ]
-
   }
 
-  //     // Future Pages
-  //     // {
-  //     //   path: 'dashboard',
-  //     //   component: DashboardComponent
-  //     // },
 
-  //     // {
-  //     //   path: 'maintenance',
-  //     //   component: MaintenanceComponent
-  //     // }
 
-  //   ]
-  // },
 
-  // Invalid Route
-  // {
-  //   path: '**',
-  //   redirectTo: 'login'
-  // }
+
+
+
+
+
+
+
+ 
 
 ];

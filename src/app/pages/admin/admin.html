@@ -1,0 +1,88 @@
+<div class="admin-container">
+
+    <mat-card class="profile-card">
+
+        <div class="profile-header">
+
+            <h2>My Account</h2>
+
+            <p>
+                View your profile information
+            </p>
+
+        </div>
+
+        <mat-form-field appearance="outline">
+
+            <mat-label>
+                Name
+            </mat-label>
+
+            <input
+                matInput
+                [(ngModel)]="admin.name"
+                [readonly]="!isEditing">
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+
+            <mat-label>
+                Email
+            </mat-label>
+
+            <input
+                matInput
+                [(ngModel)]="admin.email"
+                [readonly]="!isEditing">
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+
+            <mat-label>
+                Mobile Number
+            </mat-label>
+
+            <input
+                matInput
+                [(ngModel)]="admin.mobile"
+                [readonly]="!isEditing">
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+
+        <input
+            matInput
+            [type]="showPassword ? 'text' : 'password'"
+            [(ngModel)]="admin.password"
+            [disabled]="!isEditing">
+
+        <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="showPassword = !showPassword">
+
+            <mat-icon>
+                {{ showPassword ? 'visibility_off' : 'visibility' }}
+            </mat-icon>
+
+        </button>
+    </mat-form-field>
+
+        <button
+            mat-raised-button
+            color="primary"
+            (click)="editProfile()">
+
+            {{ isEditing ? 'Save Changes' : 'Edit Profile' }}
+            
+
+        </button>
+
+    </mat-card>
+
+</div>

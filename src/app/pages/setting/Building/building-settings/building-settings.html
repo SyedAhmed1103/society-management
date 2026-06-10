@@ -1,0 +1,94 @@
+<mat-card class="settings-card">
+
+  <h2 class="page-title">
+    Society Settings
+  </h2>
+
+  <div class="profile-section">
+
+    <img
+      *ngIf="profileImage"
+      [src]="profileImage"
+      class="profile-image">
+
+    <div
+      *ngIf="!profileImage"
+      class="profile-placeholder">
+
+      <span class="material-icons">
+        apartment
+      </span>
+
+    </div>
+
+    <input
+      type="file"
+      accept="image/*"
+      (change)="onImageSelect($event)">
+  </div>
+
+  <div class="form-grid">
+
+    <!-- Left -->
+
+    <mat-form-field appearance="outline">
+      <mat-label>Building Name</mat-label>
+      <input matInput [(ngModel)]="buildingName">
+    </mat-form-field>
+
+       <mat-form-field appearance="outline">
+      <mat-label>Building Code</mat-label>
+      <input matInput [(ngModel)]="buildingCode">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <input matInput [(ngModel)]="address">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>City</mat-label>
+      <input matInput [(ngModel)]="city">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>State</mat-label>
+      <input matInput [(ngModel)]="state">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Pincode</mat-label>
+      <input matInput [(ngModel)]="pincode">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Society Email</mat-label>
+      <input matInput [(ngModel)]="societyEmail">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Society Mobile</mat-label>
+      <input matInput [(ngModel)]="societyMobile">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Building Type</mat-label>
+        <input matInput [(ngModel)]="buildingType">
+   </mat-form-field>
+
+  </div>
+
+  <div class="button-section">
+
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="saveSettings()">
+
+      Save Settings
+
+    </button>
+
+  </div>
+
+</mat-card>

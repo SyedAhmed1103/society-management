@@ -90,7 +90,7 @@ Login() {
         localStorage.setItem('user', JSON.stringify(res.data));
 
         // User page open karo
-        this.router.navigate(['/user']);
+        this.router.navigate(['/']);
 
       }
 
